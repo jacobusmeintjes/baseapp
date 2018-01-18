@@ -1,32 +1,34 @@
-<!-- Fixed navbar -->
-<nav class="navbar navbar-inverse  navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" data-toggle="collapse" data-target="#myNavbar" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-    </div>
-    <div id="myNavbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a [routerLink]="['/']" class="navbar-brand">IBM developerWorks - Angular App <span class="glyphicon glyphicon-base"></span> </a></li>
-        </ul>
-        <!--<ul class="nav navbar-nav navbar-middle">-->
-          <!--<li class="disabled"> <a style="color:black">  . . . . . . . . . . . . . . .</a> </li>-->
-          <!--<li routerLinkActive="active"> <a routerLink="/markets">Markets</a></li>-->
-          <!--<li routerLinkActive="active"> <a routerLink="/sports">Sports</a></li>-->
-          <!--<li class="dropdown"> <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">Weather <span class="caret"></span></a>-->
-            <!--<ul class="dropdown-menu">-->
-              <!--<li routerLinkActive="active"><a [routerLink]="['/weather/yahoo']">Yahoo! Weather</a></li>-->
-              <!--<li routerLinkActive="active"><a [routerLink]="['/weather/facts']">Weather Facts</a></li>-->
-              <!--<li routerLinkActive="active"><a [routerLink]="['/weather/globalwarming']">Global Warming</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-          <!--<li routerLinkActive="active"> <a routerLink="/currency">Currency</a></li>-->
-        <!--</ul>-->
-      </ul>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Modularized App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li> -->
+    </ul>  
   </div>
 </nav>
-<!-- /nav bar -->
 
 <div class="container">
   <br><br>
