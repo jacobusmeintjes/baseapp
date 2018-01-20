@@ -10,4 +10,4 @@ import {HomeComponent} from './home.component';
   exports: [
   ]
 })
-export class BaseModule { }
+export class HomeModule { }
