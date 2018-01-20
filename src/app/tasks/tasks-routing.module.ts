@@ -4,8 +4,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TasksComponent} from './tasks.component';
-import { TasksListComponent } from './tasks-list.component';
-import { TaskDetailComponent } from './task-detail.component';
+import { TasksListComponent } from './tasks-list/tasks-list.component';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 
 @NgModule({

@@ -12,4 +12,8 @@ import {Component} from '@angular/core';
 })
 
 export class TaskDetailComponent {
+
+    constructor(){
+        console.log('Task Details Component Called');
+    }
 }
