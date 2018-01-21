@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 
 import {HomeModule} from './home/home.module';
 import { TasksModule } from './tasks/tasks.module';
-
-
+import { MenuService } from './app.services';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,9 +18,11 @@ import { TasksModule } from './tasks/tasks.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
