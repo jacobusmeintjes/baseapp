@@ -17,6 +17,6 @@
      {
         "ID": 4,
         "Name": "Trucks",
-        "Path": "/admin/trucks"
+        "Path": "/trucks"
      }                 
  ]
