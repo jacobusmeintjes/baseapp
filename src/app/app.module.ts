@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 
 import {HomeModule} from './home/home.module';
 import { TasksModule } from './tasks/tasks.module';
+import { ClientModule } from './clients/client.module';
+
 import { MenuService } from './app.services';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';

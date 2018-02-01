@@ -10,18 +10,13 @@
        "Path": "/tasks"
     },
     {
-        "ID": 2,
-        "Name": "Admin",
-        "Path": "",
-         "Items": [{
-            "ID": 3,
-            "Name": "Clients",
-            "Path": "/admin/clients"
-         },
-         {
-            "ID": 4,
-            "Name": "Trucks",
-            "Path": "/admin/trucks"
-         }                 ]
-    }        
+        "ID": 3,
+        "Name": "Clients",
+        "Path": "/clients"
+     },
+     {
+        "ID": 4,
+        "Name": "Trucks",
+        "Path": "/admin/trucks"
+     }                 
  ]
