@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { MenuItem } from './model/menu.model';
 import {HttpClient } from '@angular/common/http';
 
+import * as menu from '../data/menu.json';
+
 @Injectable()
 
 export class MenuService {

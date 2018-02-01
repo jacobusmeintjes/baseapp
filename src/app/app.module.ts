@@ -9,11 +9,12 @@ import { TasksModule } from './tasks/tasks.module';
 import { MenuService } from './app.services';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { TrucksModule } from './trucks/trucks.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
