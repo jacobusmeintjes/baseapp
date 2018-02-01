@@ -6,18 +6,20 @@ import { AppComponent } from './app.component';
 
 import {HomeModule} from './home/home.module';
 import { TasksModule } from './tasks/tasks.module';
+import { ClientModule } from './clients/client.module';
+
 import { MenuService } from './app.services';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { TrucksModule } from './trucks/trucks.module';
 import { MenuComponent } from './common/menu/menu.component';
 import { HeaderComponent } from './common/header/header.component';
-import { MenuItemComponent } from './common/menu/menuitem.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, MenuItemComponent, HeaderComponent
+    AppComponent, MenuComponent, HeaderComponent
   ],
   imports: [
     BrowserModule,
