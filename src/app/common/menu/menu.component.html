@@ -1,5 +1,15 @@
 <ul class="navbar-nav mr-auto">       
     <li *ngFor="let item of menuItems let i=index" [ngClass]="item.Items !== undefined && item.Items.length > 0 ? 'nav-item dropdown' : 'nav-item'">          
-    <menu-item [menuItem]="item"></menu-item>                      
+    <!-- <menu-item [menuItem]="item"></menu-item> -->
+    <a *ngIf="item.Items === undefined" class="nav-link" routerLink="{{item.Path}}">
+        {{item.Name}}
+    </a>
+    
+    <a *ngIf="item.Items !== undefined && item.Items.length > 0" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{item.Name}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="item.Items !== undefined && item.Items.length > 0">
+        <a class="dropdown-item" *ngFor="let sub_item of item.Items"  href="{{sub_item.Path}}">{{sub_item.Name}}</a>
+    </div>
   </li>        
 </ul>  
