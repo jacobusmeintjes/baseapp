@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 <<<<<<< HEAD
 import { TrucksModule } from './trucks/trucks.module';
 =======
+import { MenuComponent } from './common/menu/menu.component';
+import { HeaderComponent } from './common/header/header.component';
 import { MenuItemComponent } from './common/menu/menuitem.component';
 >>>>>>> 44078c40bb0c8c7a2f8fc369f12130441396d88f
 
@@ -21,6 +23,7 @@ import { MenuItemComponent } from './common/menu/menuitem.component';
 <<<<<<< HEAD
     AppComponent,
 =======
+    AppComponent, MenuComponent, MenuItemComponent, HeaderComponent
 >>>>>>> 44078c40bb0c8c7a2f8fc369f12130441396d88f
   ],
   imports: [
