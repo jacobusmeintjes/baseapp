@@ -1,0 +1,10 @@
+<a *ngIf="menuItem.Items === undefined" class="nav-link" routerLink="{{menuItem.Path}}">
+    {{menuItem.Name}}
+</a>
+
+<a *ngIf="menuItem.Items !== undefined && menuItem.Items.length > 0" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{menuItem.Name}}
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="menuItem.Items !== undefined && menuItem.Items.length > 0">
+    <a class="dropdown-item" *ngFor="let item of menuItem.Items"  href="{{item.Path}}">{{item.Name}}</a>
+</div>
