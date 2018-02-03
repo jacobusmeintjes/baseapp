@@ -1,33 +1,36 @@
 // require('dotenv').load();
+const express = require('express');
+const low = require('lowdb');
+const path = require('path');
+const storage = require('lowdb/adapters/FileSync');
+const uuid = require('node-uuid');
 
-var express = require(`express`);
+const bodyParser = require('body-parser');
+const logger = require('winston');
+const morgan = require('morgan');
+
+
 var app = express();
 var fs = require('fs');
 
+console.log(path.join(__dirname, 'src/data/db.json'));
+const adapter = new storage(path.join(__dirname, 'src/data/db.json'));
+const db = low(adapter);
 
-// Add headers
-app.use(function (req, res, next) {
+app.set('host', 'localhost');
+app.set('port', 3000);
 
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Access-Control-Allow-Origin");
+app.use(morgan('dev'));
+app.use(bodyParser.text());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
-    // Website you wish to allow to connect
-    //res.header('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    //res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-    //res.setHeader("Access-Control-Allow-Headers","Content-Type, Access-Control-Allow-Origin");
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    //res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, DELETE, OPTIONS, POST, PUT');
+    res.header('Access-Control-Allow-Headers', 'Accept, Content-Type, Origin, X-Requested-With');
     next();
-});
+  });
 
 app.get('/api', function(req, res){   
     res.json({message: `Welcome to the Server`});
@@ -41,15 +44,51 @@ app.get('/api/menu', function(req, res, next){
     fs.readFile('./src/data/menu.json', 'utf8', function (err, data) {
         if (err) throw err;
         obj = JSON.parse(data);
-        console.log(data);
+        //console.log(data);
         
         res.json(obj);
     });
     
 })
 
+app.post('/api/tasks', (req, res) => {
+    
+  console.log(req.body);
+  let data = req.body;
+    
+    
 
+    data.id = uuid.v4();
+    let task = db.get('tasks').push(data).last().value();
+    res.status(200).json(task);
+  });
+  
+  app.get('/api/tasks', (req, res) => {
+    res.status(200).json(db.get('tasks').value());
+  });
+  
+  app.get('/api/tasks/:id', (req, res) => {
+    res.status(200);
+  });
+  
+  app.put('/api/tasks/:id', (req, res) => {
+    let id = req.params.id;
+    let task = db.get('tasks').find({id}).assign(req.body).value();
+    res.status(200).json(task);
+  });
+  
+  app.delete('/api/tasks/:id', (req, res) => {
+    let id = req.params.id;
+    let task = db.get('tasks').find({id}).value();
+    db.get('tasks').remove({id}).value();
+    res.status(200).json(task);
+  });
 
-app.listen(3000, ()=>{
-    console.log(`API listening on port 3000`);
+app.listen(app.get('port'), app.get('host'), error => {
+  if (error) {
+    logger.error(error);
+  }
+  else {
+    logger.info(`Server listening @ ${app.get('host')}:${app.get('port')}`);
+  }
 })

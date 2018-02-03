@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrucksModule } from './trucks/trucks.module';
 import { MenuComponent } from './common/menu/menu.component';
 import { HeaderComponent } from './common/header/header.component';
+import { AppStoreModule } from './store/app-store.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -23,10 +26,13 @@ import { HeaderComponent } from './common/header/header.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HomeModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    AppStoreModule
   ],
   providers: [MenuService],
   bootstrap: [AppComponent]

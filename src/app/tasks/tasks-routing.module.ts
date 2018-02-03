@@ -1,35 +1,12 @@
-/**
- * Created by namita on 7/10/16.
- */
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {TasksComponent} from './tasks.component';
-import { TasksListComponent } from './tasks-list/tasks-list.component';
-import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
+import { TasksComponent } from './containers/tasks/tasks.component';
+
+const routes: Routes = [{ path: '', component: TasksComponent }];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild([
-            {
-                path: '',
-                component: TasksComponent ,
-                 children: [
-                     {
-                         path: '',
-                         component: TasksListComponent
-                     },
-                     {
-                         path: ':id',
-                         component: TaskDetailComponent,
-                     }
-                 ]
-            }
-        ])
-    ],
-    exports: [
-        RouterModule
-    ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class TasksRoutingModule {
-}
+export class TasksRoutingModule {}
