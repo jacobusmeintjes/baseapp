@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: 'tasks', loadChildren: 'app/tasks/tasks.module#TasksModule'},
   {path: 'clients', loadChildren: 'app/clients/client.module#ClientModule'},
   {path: 'trucks', loadChildren: 'app/trucks/trucks.module#TrucksModule'},
+  {path: 'calculators', loadChildren: 'app/calculators/calculators.module#CalculatorsModule'},
     // otherwise redirect to base
     { path: '**', redirectTo: '' }];
 

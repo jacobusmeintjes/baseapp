@@ -5,6 +5,14 @@
       [(ngModel)]="title"
       (keyup.escape)="clear()"
       autocomplete="off"
-      autofocus>
-  </mat-input-container>
+      autofocus>      
+    <input matInput placeholder="When must the task be completed?" type="date"
+      name="date"
+      [(ngModel)]="date"
+      (keyup.escape)="clear()"
+      autocomplete="off">    
+  </mat-input-container>   
 </form>
+
+
+

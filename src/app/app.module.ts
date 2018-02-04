@@ -17,7 +17,7 @@ import { MenuComponent } from './common/menu/menu.component';
 import { HeaderComponent } from './common/header/header.component';
 import { AppStoreModule } from './store/app-store.module';
 import { SharedModule } from './shared/shared.module';
-
+import { CalculatorsModule } from './calculators/calculators.module';
 
 
 @NgModule({

@@ -1,0 +1,66 @@
+<mat-card>
+  <!-- <app-task-form (createTask)="onCreateTask($event)"></app-task-form>
+    <mat-spinner *ngIf="isLoading$ | async; else taskList" style="margin:0 auto;"></mat-spinner>
+    <ng-template #taskList>
+      <app-tasks-list
+        [tasks]="tasks$"
+        (remove)="onRemoveTask($event)"
+        (edit)="onUpdateTask($event)">
+      </app-tasks-list>
+    </ng-template> -->
+  <div class="error-msg" *ngIf="error$ | async as error">
+    <p>{{ error }}</p>
+  </div>
+</mat-card>
+
+
+
+<div class="row">
+  <div class="col-md-3">
+    <fieldset>
+      <legend>Bond Repayments</legend>
+      <div class="form-control">
+        <div class="form-row">
+          <div class="col-md-12">
+            <label for="initialAmount">Initial Amount</label>
+            <input type="text" class="form-control" id="initialAmount" placeholder="Initial Amount" #initialAmount
+                   value="1200000"/>
+          </div>
+          <div class="col-md-12">
+            <label for="interestRate">Interest Rate</label>
+            <input type="text" class="form-control" id="interestRate" placeholder="Interest Rate" #interestRate
+                   value="11"/>
+          </div>
+          <div class="col-md-12">
+            <label for="repaymentRate">Payment Frequency</label>
+            <select class="form-control" id="repaymentRate" #repaymentRate>
+              <option value="Weekly">Weekly</option>
+              <option value="Bi-Weekly">Bi-Weekly</option>
+              <option value="Monthly" selected="selected">Monthly</option>
+              <option value="Quarterly">Quarterly</option>
+              <option value="Annually">Annually</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <label for="numberOfPayments">Number of Years</label>
+            <input type="text" class="form-control" id="numberOfPayments" placeholder="Number of Years"
+                   #numberOfPayments value="20"/>
+          </div>
+          <div class="col-md-12">
+            <label for="administrationFee">Administration Fee</label>
+            <input type="text" class="form-control" id="administrationFee" placeholder="Administration Fee"
+                   #administrationFee value="0.00"/>
+          </div>
+          <div class="col-md-12">
+            <br/>
+          </div>
+          <div class="col-md-12">
+            <button class="btn btn-primary pull-right" type="button" (click)="onCalculate()">Calculate</button>
+          </div>
+        </div>
+      </div>
+
+
+      </fieldset>
+  </div>
+</div>

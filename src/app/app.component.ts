@@ -20,6 +20,6 @@ export class AppComponent implements OnInit {
   }
 
   convertResult(result) {
-    this.menuItems = result;
+    this.menuItems = result;    
   }
 }

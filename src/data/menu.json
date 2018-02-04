@@ -10,6 +10,16 @@
        "Path": "/tasks"
     },
     {
+       "ID": 5,
+       "Name": "Calculators",
+       "Path": "",
+       "Items": [{
+            "ID": 6,
+            "Name": "Bond",
+            "Path": "/calculators/bond"
+       }]
+    },
+    {
         "ID": 3,
         "Name": "Clients",
         "Path": "/clients"

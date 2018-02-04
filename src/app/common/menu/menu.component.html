@@ -1,6 +1,7 @@
 <ul class="navbar-nav mr-auto">       
     <li *ngFor="let item of menuItems let i=index" [ngClass]="item.Items !== undefined && item.Items.length > 0 ? 'nav-item dropdown' : 'nav-item'">          
     <!-- <menu-item [menuItem]="item"></menu-item> -->
+    
     <a *ngIf="item.Items === undefined" class="nav-link" routerLink="{{item.Path}}">
         {{item.Name}}
     </a>
