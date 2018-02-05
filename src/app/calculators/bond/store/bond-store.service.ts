@@ -22,6 +22,10 @@ export class BondStoreService extends StoreService {
     super();
   }
 
+  dispatchCreateAction(record: any) { }
+  dispatchUpdateAction(record: any) { }
+  dispatchRemoveAction({ id: any }) { }
+
   dispatchLoadAction() {
     this.dispatchAction(new bond.LoadAction());
   }
@@ -38,7 +42,7 @@ export class BondStoreService extends StoreService {
     this.dispatchAction(new bond.RemoveAdditionalPaymentAction(id));
   }
 
-  getBondPayments() {
+  getCalculation() {
     return this.store.select(this.selectors.selectAll);
   }
 
@@ -48,17 +52,5 @@ export class BondStoreService extends StoreService {
 
   getError() {
     return this.store.select(this.error);
-  }
-
-  findById(record: { id }) {
-    return this.getTasks()[record['id']];
-  }
-
-  getCurrentTaskSelected() {
-    return Observable.combineLatest(
-      this.getTasks(),
-      this.store.select(this.selectCurrentTaskId),
-      (tasks, selectedId) => selectedId.map(id => tasks[id])
-    );
   }
 }

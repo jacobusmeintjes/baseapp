@@ -1,5 +1,5 @@
 import { BondState, bondInitialState } from './bond.state';
-import { BondAction, BondActions } from './bond.actions';
+import { BondAction, BondActions, LoadSuccessAction } from './bond.actions';
 
 
 export function bondReducer(state = bondInitialState,
@@ -10,8 +10,31 @@ export function bondReducer(state = bondInitialState,
             return Object.assign({}, state, {
                 isCalculated: false,
                 isCalculating: false,
+                isLoading: true,
                 hasError: false,
                 error: null
+            });
+        }
+        case BondActions.LOAD_SUCCESS: {
+            return Object.assign({}, state, {
+                isLoading: false,
+                isCalculated: false,
+                isCalculating: false,
+                hasError: false,
+                isLoaded: true,
+                error: null
+            });
+        }
+        case BondActions.CALCULATE: {
+            return Object.assign({}, state, {
+                isCalculating: true,
+                isCalculated: false
+            });
+        }
+        case BondActions.CALCULATE_SUCCESS: {
+            return Object.assign({}, state, {
+                isCalculating: false,
+                isCalculated: true
             });
         }
 

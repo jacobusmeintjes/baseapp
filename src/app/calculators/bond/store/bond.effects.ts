@@ -2,7 +2,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 import { Injectable } from '@angular/core';
@@ -26,6 +26,17 @@ export class BondEffects {
                 .map(res => new bond.LoadSuccessAction(res))
                 .catch(error => this.handleError(error))
             );
+
+    @Effect()
+    calculateAction$ = this.actions$
+            .ofType<bond.CalculateAction>(bond.BondActions.CALCULATE)
+            .map(action => action.payload)
+            .switchMap(payload =>
+                this.api
+                    .calculate(payload)
+                    .map(res => new bond.CalculateSuccessAction(res))
+                    .catch(error => this.handleError(error))
+                );
 
 
     private handleError(error) {

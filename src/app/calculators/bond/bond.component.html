@@ -1,4 +1,4 @@
-<mat-card>
+<!-- <mat-card> -->
   <!-- <app-task-form (createTask)="onCreateTask($event)"></app-task-form>
     <mat-spinner *ngIf="isLoading$ | async; else taskList" style="margin:0 auto;"></mat-spinner>
     <ng-template #taskList>
@@ -8,10 +8,10 @@
         (edit)="onUpdateTask($event)">
       </app-tasks-list>
     </ng-template> -->
-  <div class="error-msg" *ngIf="error$ | async as error">
+  <!-- <div class="error-msg" *ngIf="error$ | async as error">
     <p>{{ error }}</p>
-  </div>
-</mat-card>
+  </div> -->
+<!-- </mat-card> -->
 
 
 
@@ -23,17 +23,15 @@
         <div class="form-row">
           <div class="col-md-12">
             <label for="initialAmount">Initial Amount</label>
-            <input type="text" class="form-control" id="initialAmount" placeholder="Initial Amount" #initialAmount
-                   value="1200000"/>
+            <input class="form-control" id="initialAmount" [(ngModel)]="initialAmount" placeholder="Initial Amount"/>
           </div>
           <div class="col-md-12">
             <label for="interestRate">Interest Rate</label>
-            <input type="text" class="form-control" id="interestRate" placeholder="Interest Rate" #interestRate
-                   value="11"/>
+            <input type="text" class="form-control" id="interestRate" [(ngModel)]="interestRate" placeholder="Interest Rate"/>
           </div>
           <div class="col-md-12">
             <label for="repaymentRate">Payment Frequency</label>
-            <select class="form-control" id="repaymentRate" #repaymentRate>
+            <select class="form-control" id="repaymentRate" [(ngModel)]="repaymentRate">
               <option value="Weekly">Weekly</option>
               <option value="Bi-Weekly">Bi-Weekly</option>
               <option value="Monthly" selected="selected">Monthly</option>
@@ -43,8 +41,7 @@
           </div>
           <div class="col-md-12">
             <label for="numberOfPayments">Number of Years</label>
-            <input type="text" class="form-control" id="numberOfPayments" placeholder="Number of Years"
-                   #numberOfPayments value="20"/>
+            <input type="text" class="form-control" [(ngModel)]="numberOfPayments" id="numberOfPayments" placeholder="Number of Years"/>
           </div>
           <div class="col-md-12">
             <label for="administrationFee">Administration Fee</label>

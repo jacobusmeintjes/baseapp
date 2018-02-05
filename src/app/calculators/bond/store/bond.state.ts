@@ -7,6 +7,7 @@ export interface BondState extends EntityState<BondCalculator> {
     error: any;
     isCalculated: boolean;
     isCalculating: boolean;
+    isLoaded: boolean;
 }
 
 export const bondAdapter: EntityAdapter<BondCalculator> = createEntityAdapter<BondCalculator>({
@@ -14,6 +15,7 @@ export const bondAdapter: EntityAdapter<BondCalculator> = createEntityAdapter<Bo
 });
 
 export const bondInitialState: BondState = bondAdapter.getInitialState({
+  isLoaded: false,
   isCalculated: false,
   isCalculating: false,
   error: null

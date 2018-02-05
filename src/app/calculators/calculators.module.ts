@@ -3,7 +3,7 @@ import { BondComponent } from './bond/bond.component';
 import { CalculatorRoutingModule } from './calculators-routing';
 import { BondStoreModule } from './bond/store/bond-store.module';
 import { BondService } from './bond/services/bond.service';
-
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +11,8 @@ import { BondService } from './bond/services/bond.service';
   declarations: [BondComponent],
   imports: [
       CalculatorRoutingModule,
-      BondStoreModule
+      BondStoreModule,
+      FormsModule
   ],
   exports: [
   ],
