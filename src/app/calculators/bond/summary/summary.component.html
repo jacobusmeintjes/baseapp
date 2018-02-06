@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">&nbsp;</div>
+
+    <div class="row">&nbsp;
+        <div class="col-3 font-weight-bold float-right">
+        </div>
+        <div class="col-3">
+            <div class="float-right font-weight-bold">Standard Payments</div>
+        </div>
+        <div class="col-3">
+            <div class="float-right font-weight-bold">Additional Payments</div>
+        </div>
+        <div class="col-2">
+            <div class="float-right font-weight-bold text-info">Savings</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 font-weight-bold float-right">
+            <div class="float-right text-nowrap">
+                Monthly Repayment:
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="float-right">{{calculation$ | async}}</div>
+        </div>
+        <div class="col-3">
+            <div class="float-right">-</div>
+        </div>
+        <div class="col-2">
+            <div class="float-right text-info">-</div>
+        </div>
+    </div>
+</div>
+<hr/>

@@ -1,47 +1,64 @@
 import { Injectable } from '@angular/core';
-import { BondCalculator, Payment } from '../model/BondCalculator';
+import { BondCalculator, Payment, PaymentTypes } from '../model/BondCalculator';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class BondService {
-    constructor() {}
+    constructor() { }
 
     load(): Observable<BondCalculator> {
         return Observable.of(new BondCalculator(0, 0, 0, 0, '0'));
-
-        // return {
-        //     InitialAmount: 0,
-        //     InterestRate: 0,
-        //     NumberOfYears: 0,
-        //     ExtraPayment: 0,
-        //     PaymentType: null,
-        //     AdditionalPayments: [],
-        //     Payments: []
-        // };
     }
+
 
     calculate(bondCalculator: BondCalculator): Observable<any> {
 
+        for(let i = 0; i < 1000000; i++){
+            let b = i + i * (i - 1);
+        }
+
         let local: number = bondCalculator.InitialAmount;
 
-    for (let i = 0; i < bondCalculator.numberOfPremiums; i++) {
+        const rateDividor = this.convertToNumberOfPayments(bondCalculator.PaymentType);
+        const numberOfPayments = bondCalculator.NumberOfYears * rateDividor;
 
-      let item = new PaymentDetailItem(i + 1, initialAmount, interestRate, payment, ratePeriod, extraPayment);
+        const rate = bondCalculator.InterestRate / 100 / rateDividor;
+        const nominator: number = bondCalculator.InitialAmount * rate;
+        const denominator: number = 1 - (Math.pow((1 + rate), - numberOfPayments));
+        const installment: number = (nominator / denominator);
 
-      this.PaymentItems.push(item);
-      initialAmount = item.OutstandingAmount;
+        for (let i = 0; i < numberOfPayments; i++) {
 
-      this.TotalInterest += item.Interest;
-      this.TotalRepayment += payment;
+            const interest = local * (bondCalculator.InterestRate / 100 / rateDividor);
 
-      if (item.OutstandingAmount <= 0) {
-        break;
-      }
-    }
+            const payment = new Payment();
+            payment.PaymentNumber = i + 1;
+            payment.InitialAmount = local;
+            payment.Interest = interest;
+            payment.Installment = installment;
+            payment.Amortization = installment - interest;
+            payment.OutstandingAmount = local - payment.Amortization;
 
-    this.BondedAmount = local;
-  
+            bondCalculator.Payments.push(payment);
+
+            local -= payment.Amortization;
+        }
 
         return Observable.of(bondCalculator);
+    }
+
+    convertToNumberOfPayments(paymentType: PaymentTypes): number {
+        switch (paymentType) {
+            case PaymentTypes.monthly:
+                return 12;
+            case PaymentTypes.weekly:
+                return 52;
+            case PaymentTypes.biweekly:
+                return 26;
+            case PaymentTypes.quarterly:
+                return 4;
+            case PaymentTypes.annually:
+                return 1;
+        }
     }
 }

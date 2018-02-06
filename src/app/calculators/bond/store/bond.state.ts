@@ -22,5 +22,6 @@ export const bondInitialState: BondState = bondAdapter.getInitialState({
 });
 
 // export const selectedTaskId = (state: TaskState) => state.selectedTaskId;
+ export const selectIsCalculated = (state: BondState) => state.isCalculated;
  export const selectIsCalculating = (state: BondState) => state.isCalculating;
  export const selectError = (state: BondState) => state.error;

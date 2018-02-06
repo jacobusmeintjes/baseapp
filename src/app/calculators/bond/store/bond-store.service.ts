@@ -14,8 +14,8 @@ export class BondStoreService extends StoreService {
 
   private selectors = state.bondAdapter.getSelectors(this.bondState);
 
-
   private isCalculating = createSelector(this.bondState, state.selectIsCalculating);
+  private isCalculated = createSelector(this.bondState, state.selectIsCalculated);
   private error = createSelector(this.bondState, state.selectError);
 
   constructor(protected store: Store<AppState>) {
@@ -44,6 +44,10 @@ export class BondStoreService extends StoreService {
 
   getCalculation() {
     return this.store.select(this.selectors.selectAll);
+  }
+
+  getIsCalculated() { 
+    return this.store.select(this.isCalculated);
   }
 
   getIsCalculating() {

@@ -1,5 +1,5 @@
 <!-- <mat-card> -->
-  <!-- <app-task-form (createTask)="onCreateTask($event)"></app-task-form>
+<!-- <app-task-form (createTask)="onCreateTask($event)"></app-task-form>
     <mat-spinner *ngIf="isLoading$ | async; else taskList" style="margin:0 auto;"></mat-spinner>
     <ng-template #taskList>
       <app-tasks-list
@@ -8,26 +8,27 @@
         (edit)="onUpdateTask($event)">
       </app-tasks-list>
     </ng-template> -->
-  <!-- <div class="error-msg" *ngIf="error$ | async as error">
+<!-- <div class="error-msg" *ngIf="error$ | async as error">
     <p>{{ error }}</p>
   </div> -->
 <!-- </mat-card> -->
 
-
+    
+<div class="row"><h2 class="col-md-12" style="text-align: center">Bond Repayments</h2></div>
 
 <div class="row">
   <div class="col-md-3">
     <fieldset>
-      <legend>Bond Repayments</legend>
+      <legend></legend>
       <div class="form-control">
         <div class="form-row">
           <div class="col-md-12">
             <label for="initialAmount">Initial Amount</label>
-            <input class="form-control" id="initialAmount" [(ngModel)]="initialAmount" placeholder="Initial Amount"/>
+            <input class="form-control" id="initialAmount" [(ngModel)]="initialAmount" placeholder="Initial Amount" />
           </div>
           <div class="col-md-12">
             <label for="interestRate">Interest Rate</label>
-            <input type="text" class="form-control" id="interestRate" [(ngModel)]="interestRate" placeholder="Interest Rate"/>
+            <input type="text" class="form-control" id="interestRate" [(ngModel)]="interestRate" placeholder="Interest Rate" />
           </div>
           <div class="col-md-12">
             <label for="repaymentRate">Payment Frequency</label>
@@ -41,12 +42,13 @@
           </div>
           <div class="col-md-12">
             <label for="numberOfPayments">Number of Years</label>
-            <input type="text" class="form-control" [(ngModel)]="numberOfPayments" id="numberOfPayments" placeholder="Number of Years"/>
+            <input type="text" class="form-control" [(ngModel)]="numberOfPayments" id="numberOfPayments" placeholder="Number of Years"
+            />
           </div>
           <div class="col-md-12">
             <label for="administrationFee">Administration Fee</label>
-            <input type="text" class="form-control" id="administrationFee" placeholder="Administration Fee"
-                   #administrationFee value="0.00"/>
+            <input type="text" class="form-control" id="administrationFee" placeholder="Administration Fee" #administrationFee value="0.00"
+            />
           </div>
           <div class="col-md-12">
             <br/>
@@ -56,8 +58,25 @@
           </div>
         </div>
       </div>
+    </fieldset>
+  </div>
+  <!-- *ngIf="isCalculated$ | async" -->
 
-
-      </fieldset>
+  <div class="col-md-9">
+    <mat-spinner *ngIf="isCalculating$ | async" style="margin:0 auto;"></mat-spinner>
+    <mat-tab-group disableRipple class="h-100 d-inline-block;" *ngIf="isCalculated$ | async">
+      <mat-tab label="Summary">
+        <app-summary></app-summary>
+      </mat-tab>
+      <mat-tab label="Amortization Table">
+        <!-- <app-loan-repayment-info></app-loan-repayment-info> -->
+      </mat-tab>
+      <!--<mat-tab label="Amortization Graph">-->
+      <!--<app-loan-repayment-chart [Payment]="payment"></app-loan-repayment-chart>-->
+      <!--</mat-tab>-->
+      <!--<mat-tab label="Amortization Graph">-->
+      <!--<app-loan-repayment-chart [Payment]="payment"></app-loan-repayment-chart>-->
+      <!--</mat-tab>-->
+    </mat-tab-group>
   </div>
 </div>

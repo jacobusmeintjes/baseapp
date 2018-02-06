@@ -17,6 +17,7 @@ export class BondComponent implements OnInit {
   initialAmount: number;
 
   calculation$: Observable<BondCalculator[]>;
+  isCalculated$: Observable<boolean>;
   isCalculating$: Observable<boolean>;
   error$: Observable<string>;
 
@@ -31,8 +32,9 @@ export class BondComponent implements OnInit {
 
     this.bondStoreService.dispatchLoadAction();
     this.calculation$ = this.bondStoreService.getCalculation();
-    this.isCalculating$ = this.bondStoreService.getIsCalculating();
+    this.isCalculated$ = this.bondStoreService.getIsCalculated();
     this.error$ = this.bondStoreService.getError();
+    this.isCalculating$ = this.bondStoreService.getIsCalculating();
   }
 
 

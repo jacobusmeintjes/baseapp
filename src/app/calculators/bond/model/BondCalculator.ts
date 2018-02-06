@@ -3,7 +3,7 @@ export class BondCalculator {
     InterestRate: number;
     NumberOfYears: number;
     ExtraPayment: number;
-    PaymentType: PaymentType;
+    PaymentType: PaymentTypes;
     AdditionalPayments: AdditionalPayment[];
     Payments: Payment[];
 
@@ -18,12 +18,18 @@ export class BondCalculator {
         this.Payments = [];
     }
 
-    mapPaymentType(paymentType: string): PaymentType {
-        switch (paymentType) {
-            case PaymentType.weekly.toString():
-                return PaymentType.weekly;
+    mapPaymentType(paymentType: string): PaymentTypes {
+        switch (paymentType.toLowerCase()) {
+            case PaymentTypes.weekly.toString():
+                return PaymentTypes.weekly;
+            case PaymentTypes.biweekly.toString():
+                return PaymentTypes.biweekly;
+            case PaymentTypes.quarterly.toString():
+                return PaymentTypes.quarterly;
+            case PaymentTypes.annually.toString():
+                return PaymentTypes.annually;
             default:
-                return PaymentType.monthly;
+                return PaymentTypes.monthly;
         }
     }
 }
@@ -39,8 +45,10 @@ export class Payment {
     InitialAmount: number;
     Interest: number;
     Installment: number;
+    Amortization: number;
+    OutstandingAmount: number;
 }
 
-export enum PaymentType {
-    weekly, biweekly, monthly, quarterly, annually
+export enum PaymentTypes {
+    weekly = 'weekly', biweekly = 'biweekly', monthly = 'monthly', quarterly = 'quarterly', annually = 'annually'
 }
