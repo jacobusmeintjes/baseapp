@@ -9,13 +9,13 @@ import * as menu from '../data/menu.json';
 @Injectable()
 
 export class MenuService {
-    menuUrl = 'http://localhost:3000/api/menu';
+    menuUrl = '/assets/menu.json';
 
     constructor(private _http: HttpClient) { }
 
     loadMenuItems(): Observable<MenuItem[]>  {
 
-       return this._http.get<MenuItem[]>(this.menuUrl);
+       return this._http.get(this.menuUrl);
     }
 
     translate(o: any) {

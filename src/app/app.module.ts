@@ -7,16 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {HomeModule} from './home/home.module';
-import { TasksModule } from './tasks/tasks.module';
-import { ClientModule } from './clients/client.module';
 
 import { MenuService } from './app.services';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { TrucksModule } from './trucks/trucks.module';
 import { MenuComponent } from './common/menu/menu.component';
 import { HeaderComponent } from './common/header/header.component';
-import { AppStoreModule } from './store/app-store.module';
 import { SharedModule } from './shared/shared.module';
 import { CalculatorsModule } from './calculators/calculators.module';
 
@@ -33,7 +29,6 @@ import { CalculatorsModule } from './calculators/calculators.module';
     HttpModule,
     HttpClientModule,
     SharedModule,
-    AppStoreModule,
     FormsModule
   ],
   providers: [MenuService],

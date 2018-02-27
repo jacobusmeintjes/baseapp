@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { BondStoreService } from './store/bond-store.service';
 import { Observable } from 'rxjs/Observable';
 import { BondCalculator } from './model/BondCalculator';
 
@@ -21,25 +20,16 @@ export class BondComponent implements OnInit {
   isCalculating$: Observable<boolean>;
   error$: Observable<string>;
 
-  constructor(private bondStoreService: BondStoreService) { }
+  constructor() { }
 
   ngOnInit() {
     this.initialAmount = 1200000;
     this.interestRate = 11;
     this.repaymentRate = 'Monthly';
     this.numberOfPayments = 20;
-
-
-    this.bondStoreService.dispatchLoadAction();
-    this.calculation$ = this.bondStoreService.getCalculation();
-    this.isCalculated$ = this.bondStoreService.getIsCalculated();
-    this.error$ = this.bondStoreService.getError();
-    this.isCalculating$ = this.bondStoreService.getIsCalculating();
   }
 
 
   onCalculate() {
-    this.bondStoreService.dispatchCalculateAction(
-      new BondCalculator(this.initialAmount, this.interestRate, this.numberOfPayments, 0, this.repaymentRate));
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { BondStoreService } from '../store/bond-store.service';
 import { Observable } from 'rxjs/Observable';
 import { BondCalculator } from '../model/BondCalculator';
 
@@ -11,9 +10,9 @@ import { BondCalculator } from '../model/BondCalculator';
 export class SummaryComponent implements OnInit {
   calculation$: Observable<BondCalculator[]>;
 
-  constructor(private bondStoreService: BondStoreService) { }
+  constructor() { }
 
     ngOnInit() {
-      this.calculation$ = this.bondStoreService.getCalculation();
+      
     }
 }
