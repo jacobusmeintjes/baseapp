@@ -15,7 +15,7 @@ export class BondComponent implements OnInit {
   repaymentRate: string;
   initialAmount: number;
 
-  calculation$: Observable<BondCalculator[]>;
+  calculation$: Observable<BondCalculator>;
   isCalculated$: Observable<boolean>;
   isCalculating$: Observable<boolean>;
   error$: Observable<string>;
@@ -31,5 +31,6 @@ export class BondComponent implements OnInit {
 
 
   onCalculate() {
+    
   }
 }
